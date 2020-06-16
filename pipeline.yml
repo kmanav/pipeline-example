@@ -22,7 +22,7 @@ spec:
   strategy:
     type: JenkinsPipeline
     jenkinsPipelineStrategy:
-      jenkinsfile: "node() {\nstage 'build'\nopenshiftBuild(buildConfig: 'nodejs-app',  namespace: 'development', showBuildLogs: 'true')\nstage 'deploy'\nopenshiftDeploy(deploymentConfig: 'nodejs-app', namespace: 'development')\nopenshiftScale(deploymentConfig: 'nodejs-app', namespace: 'development',replicaCount: '2')\n}"
+      jenkinsfile: "node() {\nstage 'build'\nopenshiftBuild(namespace: 'development',buildConfig: 'nodejs-app',   showBuildLogs: 'true')\nstage 'deploy'\nopenshiftDeploy(namespace: 'development',deploymentConfig: 'nodejs-app')\nopenshiftScale(namespace: 'development',deploymentConfig: 'nodejs-app',replicaCount: '2')\n}"
   output:
   resources:
   postCommit:
